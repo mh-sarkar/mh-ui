@@ -26,6 +26,10 @@ class RatingWidget extends StatelessWidget {
   final MainAxisAlignment? mainAxisAlignment;
   final CrossAxisAlignment? crossAxisAlignment;
 
+  final IconData? starFillIcon;
+  final IconData? starHalfIcon;
+  final IconData? starEmptyIcon;
+
   const RatingWidget({
     super.key,
     required this.rating,
@@ -41,6 +45,9 @@ class RatingWidget extends StatelessWidget {
     this.ratingTextPosition = RatingTextPosition.left,
     this.outOf,
     this.fontWeight = FontWeight.w600,
+    this.starFillIcon,
+    this.starHalfIcon,
+    this.starEmptyIcon,
   });
 
   @override
@@ -64,11 +71,46 @@ class RatingWidget extends StatelessWidget {
                 style: TextStyle(color: color ?? textColor, fontSize: fontSize ?? 16, fontWeight: fontWeight),
               ),
             if (showRatingValue && ratingTextPosition == RatingTextPosition.left) space1R,
-            Icon(rating > 0 && rating < 1 ? Icons.star_half : Icons.star, color: rating > 0 ? color ?? ratingColor : emptyColor ?? const Color(0xff8C8FA5), size: ratingIconSize),
-            Icon(rating > 1 && rating < 2 ? Icons.star_half : Icons.star, color: rating > 1 ? color ?? ratingColor : emptyColor ?? const Color(0xff8C8FA5), size: ratingIconSize),
-            Icon(rating > 2 && rating < 3 ? Icons.star_half : Icons.star, color: rating > 2 ? color ?? ratingColor : emptyColor ?? const Color(0xff8C8FA5), size: ratingIconSize),
-            Icon(rating > 3 && rating < 4 ? Icons.star_half : Icons.star, color: rating > 3 ? color ?? ratingColor : emptyColor ?? const Color(0xff8C8FA5), size: ratingIconSize),
-            Icon(rating > 4 && rating < 5 ? Icons.star_half : Icons.star, color: rating > 4 ? color ?? ratingColor : emptyColor ?? const Color(0xff8C8FA5), size: ratingIconSize),
+            Icon(
+                rating > 0 && rating < 1
+                    ? starHalfIcon ?? Icons.star_half
+                    : rating <= 0
+                        ? starEmptyIcon ?? starFillIcon ?? Icons.star
+                        : starFillIcon ?? Icons.star,
+                color: rating > 0 ? color ?? ratingColor : emptyColor ?? const Color(0xff8C8FA5),
+                size: ratingIconSize),
+            Icon(
+                rating > 1 && rating < 2
+                    ? starHalfIcon ?? Icons.star_half
+                    : rating <= 1
+                        ? starEmptyIcon ?? starFillIcon ?? Icons.star
+                        : starFillIcon ?? Icons.star,
+                color: rating > 1 ? color ?? ratingColor : emptyColor ?? const Color(0xff8C8FA5),
+                size: ratingIconSize),
+            Icon(
+                rating > 2 && rating < 3
+                    ? starHalfIcon ?? Icons.star_half
+                    : rating <= 2
+                        ? starEmptyIcon ?? starFillIcon ?? Icons.star
+                        : starFillIcon ?? Icons.star,
+                color: rating > 2 ? color ?? ratingColor : emptyColor ?? const Color(0xff8C8FA5),
+                size: ratingIconSize),
+            Icon(
+                rating > 3 && rating < 4
+                    ? starHalfIcon ?? Icons.star_half
+                    : rating <= 3
+                        ? starEmptyIcon ?? starFillIcon ?? Icons.star
+                        : starFillIcon ?? Icons.star,
+                color: rating > 3 ? color ?? ratingColor : emptyColor ?? const Color(0xff8C8FA5),
+                size: ratingIconSize),
+            Icon(
+                rating > 4 && rating < 5
+                    ? starHalfIcon ?? Icons.star_half
+                    : rating <= 4
+                        ? starEmptyIcon ?? starFillIcon ?? Icons.star
+                        : starFillIcon ?? Icons.star,
+                color: rating > 4 ? color ?? ratingColor : emptyColor ?? const Color(0xff8C8FA5),
+                size: ratingIconSize),
             if (showRatingValue && ratingTextPosition == RatingTextPosition.right) space1R,
             if (showRatingValue && ratingTextPosition == RatingTextPosition.right)
               Text(

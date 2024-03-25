@@ -57,6 +57,7 @@ class CustomNetworkImage extends StatelessWidget {
     this.loadingIconData,
     this.backgroundColor,
     this.imagePathList,
+    this.borderRadiusOrg,
   }) : super(key: key);
   final bool isPreviewPageNeed;
   final bool isPreviewPageAppBarNeed;
@@ -70,6 +71,7 @@ class CustomNetworkImage extends StatelessWidget {
   final String? loadingImagePath;
   final IconData? loadingIconData;
   final double? borderRadius;
+  final BorderRadiusGeometry? borderRadiusOrg;
   final double? height;
   final double? width;
   final Color? imageColor;
@@ -99,7 +101,7 @@ class CustomNetworkImage extends StatelessWidget {
               )
           : null,
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(border == NetworkImageBorder.Circle ? borderRadius ?? MediaQuery.of(context).size.height : 0),
+        borderRadius: borderRadiusOrg ?? BorderRadius.circular(border == NetworkImageBorder.Circle ? borderRadius ?? MediaQuery.of(context).size.height : 0),
         child: Container(
           color: backgroundColor,
           height: height ?? MediaQuery.of(context).size.width * .3,
