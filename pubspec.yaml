@@ -1,7 +1,7 @@
 name: mh_ui
 description: This Flutter package is a UI kit for all beginner and professional who want to developed fast.
   This package also improved http request. Also load network images and error widgets. You can try this package.
-version: 0.0.1+3
+version: 0.0.1+4
 homepage: https://mhsarkar.com
 repository: https://github.com/mh-sarkar/mh-ui
 issue_tracker: https://github.com/mh-sarkar/mh-ui/issues
@@ -14,11 +14,11 @@ dependencies:
   flutter:
     sdk: flutter
   path_provider: ^2.0.15
-  http: ^1.2.0
+  http: ^1.2.1
   #####################Dev Tools#####################
 
   #For Development Purpose ///working like print
-  logger: ^1.1.0
+  logger: ^2.2.0
 
   ##################### END Dev Tools#####################
 
