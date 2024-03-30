@@ -113,60 +113,39 @@ class CustomNetworkImage extends StatelessWidget {
               color: imageColor,
               loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) {
                 if (loadingProgress == null) return child;
-                return /*FutureBuilder(
-                    future: ImageUtils.getImageFileFromAssets(loadingImagePath ?? 'assets/images/error.png'),
-                    builder: (context, a) {
-                      return
-
-                        a.data != null
-                          ? Image.file(
-                              a.data!,
-                              color: imageColor,
-                              height: height ?? MediaQuery.of(context).size.width * .3,
-                              width: width ?? MediaQuery.of(context).size.width * .3,
-                              fit: fit ?? BoxFit.cover,
-                            )
-                          : Icon(
-                              loadingIconData ?? Icons.cloud_download_rounded,
-                              color: imageColor ?? Colors.blue,
-                              size: (width ?? MediaQuery.of(context).size.width * .3) >
-                                      (height ?? MediaQuery.of(context).size.width * .3)
-                                  ? (height ?? MediaQuery.of(context).size.width * .3)
-                                  : (width ?? MediaQuery.of(context).size.width * .3),
-                            );
-                    });*/
-
-                    Container(
+                return Container(
                   color: backgroundColor,
                   height: height ?? MediaQuery.of(context).size.width * .3,
                   width: width ?? MediaQuery.of(context).size.width * .3,
                   child: Center(
-                    child: CircularProgressIndicator(
-                      value: loadingProgress.expectedTotalBytes != null ? loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes! : null,
-                      color: CustomColor.kPrimaryColor,
-                    ),
+                    child: Service.getLoadingWidget ??
+                        CircularProgressIndicator(
+                          value: loadingProgress.expectedTotalBytes != null ? loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes! : null,
+                          color: CustomColor.kPrimaryColor,
+                        ),
                   ),
                 );
               },
               errorBuilder: (context, exception, stackTrack) => FutureBuilder(
-                  future: ImageUtils.getImageFileFromAssets(errorImagePath ?? 'assets/images/error.png'),
-                  builder: (context, a) {
-                    return a.data != null
-                        ? Image.file(
-                            a.data!,
-                            color: imageColor,
-                            height: height ?? MediaQuery.of(context).size.width * .3,
-                            width: width ?? MediaQuery.of(context).size.width * .3,
-                            fit: fit ?? BoxFit.cover,
-                          )
-                        : Icon(
-                            errorIconData ?? Icons.error,
-                            color: imageColor ?? Colors.red,
-                            size: (width ?? MediaQuery.of(context).size.width * .3) > (height ?? MediaQuery.of(context).size.width * .3)
-                                ? (height ?? MediaQuery.of(context).size.width * .3)
-                                : (width ?? MediaQuery.of(context).size.width * .3),
-                          );
-                  }),
+                future: ImageUtils.getImageFileFromAssets(errorImagePath ?? 'assets/images/error.png'),
+                builder: (context, a) {
+                  return a.data != null
+                      ? Image.file(
+                          a.data!,
+                          color: imageColor,
+                          height: height ?? MediaQuery.of(context).size.width * .3,
+                          width: width ?? MediaQuery.of(context).size.width * .3,
+                          fit: fit ?? BoxFit.cover,
+                        )
+                      : Icon(
+                          errorIconData ?? Icons.error,
+                          color: imageColor ?? Colors.red,
+                          size: (width ?? MediaQuery.of(context).size.width * .3) > (height ?? MediaQuery.of(context).size.width * .3)
+                              ? (height ?? MediaQuery.of(context).size.width * .3)
+                              : (width ?? MediaQuery.of(context).size.width * .3),
+                        );
+                },
+              ),
               height: height ?? MediaQuery.of(context).size.width * .3,
               width: width ?? MediaQuery.of(context).size.width * .3,
             ),

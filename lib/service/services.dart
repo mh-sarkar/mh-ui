@@ -1,3 +1,5 @@
+import 'package:flutter/cupertino.dart';
+
 class Service {
   static domain(String path) => _url = path;
 
@@ -12,6 +14,8 @@ class Service {
   static get getToken => _authToken;
   static get getTokenPrefix => _authTokenPrefix;
   static get getTokenKey => _authTokenKey;
+  static Widget? get getLoadingWidget => _loadingWidget;
+  static bool get getNeedLoadingMsg => _needLoadingMsg;
 
   static setCookie(String cookie) => _setCookie = cookie;
 
@@ -23,10 +27,16 @@ class Service {
 
   static delAuthToken(_) => _authToken = '';
 
+  static setLoadingWidget(Widget loading) => _loadingWidget = loading;
+
+  static setNeedLoadingMsg(bool needLoadingMsg) => _needLoadingMsg = needLoadingMsg;
+
   static String _url = '';
   static String _apiUrl = '';
   static String _authToken = '';
   static String _setCookie = '';
   static String _authTokenPrefix = 'Bearer ';
   static String _authTokenKey = 'Authorization';
+  static bool _needLoadingMsg = true;
+  static Widget? _loadingWidget;
 }
