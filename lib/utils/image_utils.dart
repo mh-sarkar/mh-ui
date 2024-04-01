@@ -5,6 +5,8 @@ import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'package:path_provider/path_provider.dart';
 
+import 'global.dart';
+
 class ImageUtils {
   static Future<String> base64ImageToImageFile(String encodedData, [String extensionName = 'png']) async {
     // final encodedStr = "put base64 encoded string here";
@@ -16,11 +18,18 @@ class ImageUtils {
   }
 
   static Future<File> getImageFileFromAssets(String path) async {
-    final byteData = await rootBundle.load('$path');
-
-    final file = File('${(await getTemporaryDirectory()).path}/$path');
+    // globalLogger.d('getImageFileFromAssets: $path', error: 'ImageUtils');
+    final temp = await getTemporaryDirectory();
+    // globalLogger.d('getImageFileFromAssets temp: ${temp.path}', error: 'ImageUtils');
+    final file = File('${temp.path}/$path');
+    // globalLogger.d('getImageFileFromAssets file: ${file.path}', error: 'ImageUtils');
     await file.create(recursive: true);
+    // try {
+    final byteData = await rootBundle.load(path);
     await file.writeAsBytes(byteData.buffer.asUint8List(byteData.offsetInBytes, byteData.lengthInBytes));
+    // } catch (e) {
+    //   globalLogger.e('getImageFileFromAssets: $e', error: 'ImageUtils');
+    // }
 
     return file;
   }

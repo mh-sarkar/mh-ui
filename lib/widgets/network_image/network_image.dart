@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mh_ui/utils/color/custom_color.dart';
 import 'package:mh_ui/utils/image_utils.dart';
+import 'package:mh_ui/widgets/network_image/utils.dart';
 
 import '../../service/services.dart';
 
@@ -58,6 +59,8 @@ class CustomNetworkImage extends StatelessWidget {
     this.backgroundColor,
     this.imagePathList,
     this.borderRadiusOrg,
+    this.errorImageType = ErrorImageType.imageNotAvailable,
+    this.callbackErrorFunction,
   }) : super(key: key);
   final bool isPreviewPageNeed;
   final bool isPreviewPageAppBarNeed;
@@ -78,6 +81,8 @@ class CustomNetworkImage extends StatelessWidget {
   final BoxFit? fit;
   final NetworkImageBorder? border;
   final List<String>? imagePathList;
+  final ErrorImageType errorImageType;
+  final Function(dynamic)? callbackErrorFunction;
 
   @override
   Widget build(BuildContext context) {
@@ -127,9 +132,29 @@ class CustomNetworkImage extends StatelessWidget {
                 );
               },
               errorBuilder: (context, exception, stackTrack) => FutureBuilder(
-                future: ImageUtils.getImageFileFromAssets(errorImagePath ?? 'assets/images/error.png'),
+                future: ImageUtils.getImageFileFromAssets(errorImagePath ?? getErrorImage(errorImageType)),
                 builder: (context, a) {
-                  return a.data != null
+                  if (callbackErrorFunction != null) {
+                    final data = {
+                      'error_status': true,
+                      // 'error_stack': stackTrack,
+                      'error_type': 'Image Error',
+                      'network_image_path': networkImagePath,
+                      'error_message': 'Error: Unable to load network image: $networkImagePath.\nThe network image does not exist or has empty data.',
+                    };
+                    if (a.hasData) {
+                      data.addAll({
+                        'other': 'error image show',
+                      });
+                      callbackErrorFunction!(data);
+                    } else if (a.hasError) {
+                      data.addAll({
+                        'other': 'error image error',
+                      });
+                      callbackErrorFunction!(data);
+                    }
+                  }
+                  return errorIconData == null && a.data != null
                       ? Image.file(
                           a.data!,
                           color: imageColor,
@@ -157,20 +182,28 @@ class CustomNetworkImage extends StatelessWidget {
 }
 
 class ImagePreview extends StatefulWidget {
-  List<String> imageList;
-  int index;
-  String? title;
-  Color? titleColor;
-  bool isAppBarShow;
-  Color? appBarColor;
+  final List<String> imageList;
+  final int index;
+  final String? title;
+  final Color? titleColor;
+  final bool isAppBarShow;
+  final Color? appBarColor;
 
-  ImagePreview({Key? key, required this.imageList, required this.index, this.title, this.titleColor = Colors.black, this.isAppBarShow = true, this.appBarColor}) : super(key: key);
+  const ImagePreview({Key? key, required this.imageList, required this.index, this.title, this.titleColor = Colors.black, this.isAppBarShow = true, this.appBarColor})
+      : super(key: key);
 
   @override
-  _ImagePreviewState createState() => _ImagePreviewState();
+  State<ImagePreview> createState() => _ImagePreviewState();
 }
 
 class _ImagePreviewState extends State<ImagePreview> {
+  int index = 0;
+  @override
+  void initState() {
+    index = widget.index;
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -212,21 +245,21 @@ class _ImagePreviewState extends State<ImagePreview> {
               child: NetworkImageWidget(
                 height: size.height - (MediaQuery.of(context).padding.top + kToolbarHeight),
                 width: size.width,
-                image: widget.imageList[widget.index],
+                image: widget.imageList[index],
                 boxFit: BoxFit.contain,
               ),
             ),
           ),
           Visibility(
-            visible: widget.index > 0,
+            visible: index > 0,
             child: Positioned(
                 top: (size.height / 2) - 22.5,
                 left: 10,
                 child: GestureDetector(
                   onTap: () {
-                    if (widget.index > 0) {
+                    if (index > 0) {
                       setState(() {
-                        widget.index--;
+                        index--;
                       });
                     }
                   },
@@ -242,15 +275,15 @@ class _ImagePreviewState extends State<ImagePreview> {
                 )),
           ),
           Visibility(
-            visible: widget.index < widget.imageList.length - 1,
+            visible: index < widget.imageList.length - 1,
             child: Positioned(
                 top: (size.height / 2) - 22.5,
                 right: 10,
                 child: GestureDetector(
                   onTap: () {
-                    if (widget.index < widget.imageList.length - 1) {
+                    if (index < widget.imageList.length - 1) {
                       setState(() {
-                        widget.index++;
+                        index++;
                       });
                     }
                   },
@@ -294,12 +327,12 @@ class NetworkImageWidget extends StatefulWidget {
   final NetworkImageBorder border;
 
   @override
-  _NetworkImageWidgetState createState() => _NetworkImageWidgetState();
+  State<NetworkImageWidget> createState() => _NetworkImageWidgetState();
 }
 
 class _NetworkImageWidgetState extends State<NetworkImageWidget> {
   dynamic _imageWidget() {
-    // TODO in future add a cachedNetworkimage
+    // TODO in future add a cached Networkimage
     // otherwise the network toll will be much higher
     // CachedNetworkImage(
     //   imageUrl: "http://via.placeholder.com/200x150",
