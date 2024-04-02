@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:mh_ui/mh_ui.dart';
 
 void main() {
   runApp(const MyApp());
+  //
+  Service.setLoadingWidget(
+    Image.asset(
+      'assets/loading-c.gif',
+      height: 30,
+      width: 30,
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
