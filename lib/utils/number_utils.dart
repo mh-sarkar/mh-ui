@@ -2,6 +2,22 @@ import 'package:flutter/material.dart';
 
 import 'global.dart';
 
+/// [localizationCheckForNumber] method to check the number for localization
+/// This method is used to check the number for localization
+/// This is very useful for localization
+/// This method is can be uses for any number
+/// Here [locale] is used to check the locale
+/// If the locale is 'bn_BD' then the number will be converted to Bengali number
+/// Here using [banNumber] is used to convert the number to Bengali number
+/// Inside [banNumber] method [numberMultiLan] is used to convert the number to Bengali number
+/// This method is a global method
+/// This method is used in many places
+///
+/// Example:
+///
+/// ```dart
+/// localizationCheckForNumber(1234.56);
+/// ```
 dynamic localizationCheckForNumber(dynamic data) {
   if (data == null) return null;
   if (locale != null && locale.toString() == const Locale('bn_BD').toString()) {
@@ -18,6 +34,15 @@ dynamic localizationCheckForNumber(dynamic data) {
   }
 }
 
+/// [banNumber] method to convert the number to Bengali number
+/// This method is used to convert the number to Bengali number
+/// This is very useful for localization
+///
+/// Example:
+///
+/// ```dart
+/// banNumber(1234.56);
+/// ```
 dynamic banNumber(String text) {
   for (int i = 0; i < text.length; i++) {
     final newT = numberMultiLan(text[i]);
@@ -26,6 +51,15 @@ dynamic banNumber(String text) {
   return text;
 }
 
+/// [numberMultiLan] method to convert the number to Bengali number
+/// This method is used to convert the number to Bengali number
+/// This is very useful for localization
+///
+/// Example:
+///
+/// ```dart
+/// numberMultiLan('1');
+/// ```
 dynamic numberMultiLan(String number) {
   String newNumber;
   switch (number) {
