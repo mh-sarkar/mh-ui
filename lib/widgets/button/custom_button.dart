@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mh_ui/utils/color/custom_color.dart';
 
-/// [CustomButton] class custom button widget
-/// This class is used to create a custom button
+/// [CustomButton] class custom button widget.
+/// This class is used to create a custom button.
 /// If you set your application primary color then it will use that color using [CustomColor.kPrimaryColor]. Here [primary] is used to set the button color.
 /// This button has a [isDisable] property to disable the button. We can set the [disableColor] to change the disable button color.
 /// Only one required property is [label] other properties are optional. If you don't set the optional properties then it will use the default value.
@@ -75,10 +75,10 @@ class CustomButton extends StatelessWidget {
     this.borderRadius,
   }) : super(key: key);
 
-  /// [label] is used to set the button label
-  /// This is a required property
-  /// This is a string type property
-  /// This is a mandatory property
+  /// [label] is used to set the button label.
+  /// This is a required property.
+  /// This is a string type property.
+  /// This is a mandatory property.
   ///
   /// Example:
   ///
@@ -89,9 +89,9 @@ class CustomButton extends StatelessWidget {
   /// ```
   final String label;
 
-  /// [onPressed] is used to set the button action
-  /// This is an optional property
-  /// This is a function type property
+  /// [onPressed] is used to set the button action.
+  /// This is an optional property.
+  /// This is a function type property.
   ///
   /// Example:
   ///
@@ -104,189 +104,189 @@ class CustomButton extends StatelessWidget {
   /// );
   final Function()? onPressed;
 
-  /// [primary] is used to set the button color
-  /// This is an optional property
-  /// This is a color type property
+  /// [primary] is used to set the button color.
+  /// This is an optional property.
+  /// This is a color type property.
   final Color? primary;
 
-  /// [labelColor] is used to set the label color of the button
-  /// This is an optional property
-  /// This is a color type property
+  /// [labelColor] is used to set the label color of the button.
+  /// This is an optional property.
+  /// This is a color type property.
   final Color? labelColor;
 
-  /// [fontSize] is used to set the font size of the label
-  /// This is an optional property
-  /// This is a double type property
+  /// [fontSize] is used to set the font size of the label.
+  /// This is an optional property.
+  /// This is a double type property.
   final double? fontSize;
 
-  /// [fontWeight] is used to set the font weight of the label
-  /// This is an optional property
-  /// This is a font weight type property
+  /// [fontWeight] is used to set the font weight of the label.
+  /// This is an optional property.
+  /// This is a font weight type property.
   final FontWeight? fontWeight;
 
-  /// [labelStyle] is used to set the label style of the button
-  /// This is an optional property
-  /// This is a text style type property
+  /// [labelStyle] is used to set the label style of the button.
+  /// This is an optional property.
+  /// This is a text style type property.
   final TextStyle? labelStyle;
 
-  /// [boxShadowColor] is used to set the shadow color of the button
-  /// This is an optional property
-  /// This is a color type property
+  /// [boxShadowColor] is used to set the shadow color of the button.
+  /// This is an optional property.
+  /// This is a color type property.
   final Color? boxShadowColor;
 
-  /// [borderColor] is used to set the border color of the button
-  /// This is an optional property
-  /// This is a color type property
+  /// [borderColor] is used to set the border color of the button.
+  /// This is an optional property.
+  /// This is a color type property.
   final Color? borderColor;
 
-  /// [marginHorizontal] is used to set the horizontal margin of the button
-  /// This is an optional property
-  /// This is a double type property
+  /// [marginHorizontal] is used to set the horizontal margin of the button.
+  /// This is an optional property.
+  /// This is a double type property.
   final double? marginHorizontal;
 
-  /// [marginVertical] is used to set the vertical margin of the button
-  /// This is an optional property
-  /// This is a double type property
+  /// [marginVertical] is used to set the vertical margin of the button.
+  /// This is an optional property.
+  /// This is a double type property.
   final double? marginVertical;
 
-  /// [margin] is used to set the margin of the button
-  /// This is an optional property
-  /// This is a EdgeInsetsGeometry type property
+  /// [margin] is used to set the margin of the button.
+  /// This is an optional property.
+  /// This is a EdgeInsetsGeometry type property.
   final EdgeInsetsGeometry? margin;
 
-  /// [height] is used to set the height of the button
-  /// This is an optional property
-  /// This is a double type property
+  /// [height] is used to set the height of the button.
+  /// This is an optional property.
+  /// This is a double type property.
   final double? height;
 
-  /// [elevation] is used to set the elevation of the button
-  /// This is an optional property
-  /// This is a double type property
+  /// [elevation] is used to set the elevation of the button.
+  /// This is an optional property.
+  /// This is a double type property.
   final double? elevation;
 
-  /// [contentPadding] is used to set the content padding of the button
-  /// This is an optional property
-  /// This is a double type property
+  /// [contentPadding] is used to set the content padding of the button.
+  /// This is an optional property.
+  /// This is a double type property.
   final double? contentPadding;
 
-  /// [contentHorizontalPadding] is used to set the content horizontal padding of the button
-  /// This is an optional property
-  /// This is a double type property
+  /// [contentHorizontalPadding] is used to set the content horizontal padding of the button.
+  /// This is an optional property.
+  /// This is a double type property.
   final double? contentHorizontalPadding;
 
-  /// [contentVerticalPadding] is used to set the content vertical padding of the button
-  /// This is an optional property
-  /// This is a double type property
+  /// [contentVerticalPadding] is used to set the content vertical padding of the button.
+  /// This is an optional property.
+  /// This is a double type property.
   final double? contentVerticalPadding;
 
-  /// [padding] is used to set the padding of the button
-  /// This is an optional property
-  /// This is a EdgeInsetsGeometry type property
+  /// [padding] is used to set the padding of the button.
+  /// This is an optional property.
+  /// This is a EdgeInsetsGeometry type property.
   final EdgeInsetsGeometry? padding;
 
-  /// [width] is used to set the width of the button
-  /// This is an optional property
-  /// This is a double type property
+  /// [width] is used to set the width of the button.
+  /// This is an optional property.
+  /// This is a double type property.
   final double? width;
 
-  /// [borderWidth] is used to set the border width of the button
-  /// This is an optional property
-  /// This is a double type property
+  /// [borderWidth] is used to set the border width of the button.
+  /// This is an optional property.
+  /// This is a double type property.
   final double? borderWidth;
 
-  /// [borderRadiusAll] is used to set the border radius of the button
-  /// This is an optional property
-  /// This is a double type property
+  /// [borderRadiusAll] is used to set the border radius of the button.
+  /// This is an optional property.
+  /// This is a double type property.
   final double? borderRadiusAll;
 
-  /// [borderRadius] is used to set the custom border radius of the button
-  /// This is an optional property
-  /// This is a BorderRadiusGeometry type property
+  /// [borderRadius] is used to set the custom border radius of the button.
+  /// This is an optional property.
+  /// This is a BorderRadiusGeometry type property.
   final BorderRadiusGeometry? borderRadius;
 
-  /// [iconData] is used to set the icon before the label
-  /// This is an optional property
-  /// This is a string type property
+  /// [iconData] is used to set the icon before the label.
+  /// This is an optional property.
+  /// This is a string type property.
   final String? iconData;
 
-  /// [isDisable] is used to disable the button
-  /// This is an optional property
-  /// This is a bool type property
+  /// [isDisable] is used to disable the button.
+  /// This is an optional property.
+  /// This is a bool type property.
   final bool isDisable;
 
-  /// [isBorder] is used to set the border of the button
-  /// This is an optional property
-  /// This is a bool type property
+  /// [isBorder] is used to set the border of the button.
+  /// This is an optional property.
+  /// This is a bool type property.
   final bool isBorder;
 
-  /// [prefixImage] is used to set the image before the label
-  /// This is an optional property
-  /// This is a string type property
+  /// [prefixImage] is used to set the image before the label.
+  /// This is an optional property.
+  /// This is a string type property.
   final String? prefixImage;
 
-  /// [suffixImage] is used to set the image after the label
-  /// This is an optional property
-  /// This is a string type property
+  /// [suffixImage] is used to set the image after the label.
+  /// This is an optional property.
+  /// This is a string type property.
   final String? suffixImage;
 
-  /// [prefixImageHeight] is used to set the height of the prefix image
-  /// This is an optional property
-  /// This is a double type property
+  /// [prefixImageHeight] is used to set the height of the prefix image.
+  /// This is an optional property.
+  /// This is a double type property.
   final double? prefixImageHeight;
 
-  /// [prefixImageWidth] is used to set the width of the prefix image
-  /// This is an optional property
-  /// This is a double type property
+  /// [prefixImageWidth] is used to set the width of the prefix image.
+  /// This is an optional property.
+  /// This is a double type property.
   final double? prefixImageWidth;
 
-  /// [prefixImageColor] is used to set the color of the prefix image
-  /// This is an optional property
-  /// This is a color type property
+  /// [prefixImageColor] is used to set the color of the prefix image.
+  /// This is an optional property.
+  /// This is a color type property.
   final Color? prefixImageColor;
 
-  /// [loadingColor] is used to set the loading indicator color
-  /// This is an optional property
-  /// This is a color type property
+  /// [loadingColor] is used to set the loading indicator color.
+  /// This is an optional property.
+  /// This is a color type property.
   final Color? loadingColor;
 
-  /// [disableColor] is used to set the disable button color
-  /// This is an optional property
-  /// This is a color type property
+  /// [disableColor] is used to set the disable button color.
+  /// This is an optional property.
+  /// This is a color type property.
   final Color? disableColor;
 
-  /// [loadingHeight] is used to set the height of the loading indicator
-  /// This is an optional property
-  /// This is a double type property
+  /// [loadingHeight] is used to set the height of the loading indicator.
+  /// This is an optional property.
+  /// This is a double type property.
   final double? loadingHeight;
 
-  /// [loadingWidth] is used to set the width of the loading indicator
-  /// This is an optional property
-  /// This is a double type property
+  /// [loadingWidth] is used to set the width of the loading indicator.
+  /// This is an optional property.
+  /// This is a double type property.
   final double? loadingWidth;
 
-  /// [loadingStrokeWidth] is used to set the stroke width of the loading indicator
-  /// This is an optional property
-  /// This is a double type property
+  /// [loadingStrokeWidth] is used to set the stroke width of the loading indicator.
+  /// This is an optional property.
+  /// This is a double type property.
   final double loadingStrokeWidth;
 
-  /// [suffixImageHeight] is used to set the height of the suffix image
-  /// This is an optional property
-  /// This is a double type property
+  /// [suffixImageHeight] is used to set the height of the suffix image.
+  /// This is an optional property.
+  /// This is a double type property.
   final double? suffixImageHeight;
 
-  /// [suffixImageWidth] is used to set the width of the suffix image
-  /// This is an optional property
-  /// This is a double type property
+  /// [suffixImageWidth] is used to set the width of the suffix image.
+  /// This is an optional property.
+  /// This is a double type property.
   final double? suffixImageWidth;
 
-  /// [suffixImageColor] is used to set the color of the suffix image
-  /// This is an optional property
-  /// This is a color type property
+  /// [suffixImageColor] is used to set the color of the suffix image.
+  /// This is an optional property.
+  /// This is a color type property.
   final Color? suffixImageColor;
 
-  /// [loading] is used to show the loading indicator in the button
-  /// This is an optional property
-  /// This is a bool type property
+  /// [loading] is used to show the loading indicator in the button.
+  /// This is an optional property.
+  /// This is a bool type property.
   final bool loading;
 
   @override
