@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:mh_ui/utils/color/custom_color.dart';
 
 import '../../utils/constant.dart';
 
+/// [CustomTextField] widget to set the value of textfield.
 class CustomTextField extends StatefulWidget {
   final double? height;
   final double? width;

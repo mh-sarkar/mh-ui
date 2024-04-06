@@ -1,6 +1,5 @@
 name: mh_ui
-description: This Flutter package is a UI kit for all beginner and professional who want to developed fast.
-  This package also improved http request. Also load network images and error widgets. You can try this package.
+description: This Flutter package is a UI kit for all beginner and professional who want to developed their app with a beautiful UI.
 version: 0.0.1+5
 homepage: https://mhsarkar.com
 repository: https://github.com/mh-sarkar/mh-ui
