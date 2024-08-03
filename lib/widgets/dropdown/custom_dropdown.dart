@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:mh_ui/utils/color/custom_color.dart';
 import 'package:mh_ui/utils/constant.dart';
 
-/// [DropdownListType] enum to set the dropdown list type
-/// This enum is used to set the dropdown list type
-/// This is very useful for setting the dropdown list type
-/// This is a global enum
-/// This is used in custom_dropdown.dart file
+/// [DropdownListType] enum to set the dropdown list type.
+/// This enum is used to set the dropdown list type.
+/// This is very useful for setting the dropdown list type.
+/// This is a global enum.
+/// This is used in custom_dropdown.dart file.
 enum DropdownListType { none, object, json }
 
 /// [TitleDropdown] widget use for dropdown with title or without title.

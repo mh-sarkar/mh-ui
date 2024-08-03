@@ -2,7 +2,12 @@ import 'package:flutter/material.dart';
 
 import '../../utils/constant.dart';
 
+enum TextFieldLabelPosition { float, shrink }
+
 /// [CustomTextField] widget to set the value of textfield.
+///
+///
+
 class CustomTextField extends StatefulWidget {
   final double? height;
   final double? width;
@@ -48,6 +53,8 @@ class CustomTextField extends StatefulWidget {
   final Color? errorColor;
   final Color? disableBorderColor;
   final TextAlign textAlign;
+  final TextFieldLabelPosition? labelPosition;
+  final EdgeInsetsGeometry? contentPadding;
 
   const CustomTextField({
     Key? key,
@@ -95,6 +102,8 @@ class CustomTextField extends StatefulWidget {
     this.errorFillColor,
     this.textAlign = TextAlign.start,
     this.disableBorderColor,
+    this.labelPosition = TextFieldLabelPosition.float,
+    this.contentPadding,
   }) : super(key: key);
 
   @override
@@ -126,7 +135,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          if (widget.isLabelSeparated && widget.labelText != null)
+          if (widget.isLabelSeparated && widget.labelText != null && widget.labelPosition == TextFieldLabelPosition.float)
             Row(
               children: [
                 Text(widget.labelText ?? '',
@@ -142,7 +151,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                   )
               ],
             ),
-          if (widget.isLabelSeparated && widget.labelText != null) space2C,
+          if (widget.isLabelSeparated && widget.labelText != null && widget.labelPosition == TextFieldLabelPosition.float) space2C,
           SizedBox(
             height: widget.maxLine == null && (widget.maxLine != null && widget.maxLine! > 1) ? null : widget.height ?? 44,
             width: widget.width ?? size.width,
@@ -170,10 +179,28 @@ class _CustomTextFieldState extends State<CustomTextField> {
                     ),
                     onChanged: widget.onChanged,
                     decoration: InputDecoration(
+                        label: (widget.isLabelSeparated && widget.labelText != null && widget.labelPosition == TextFieldLabelPosition.float)
+                            ? null
+                            : Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Text(widget.labelText ?? '',
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 14,
+                                        color: widget.labelColor ?? Colors.black,
+                                      )),
+                                  if (widget.isRequired)
+                                    Text(
+                                      ' *',
+                                      style: TextStyle(color: Colors.red, fontSize: widget.labelSize, fontWeight: widget.labelFontWeight),
+                                    )
+                                ],
+                              ),
                         prefixIcon: widget.prefixWidget,
                         fillColor: widget.errorMessage != null ? widget.errorFillColor ?? const Color(0xffFFF5F6) : widget.fillColor,
                         filled: widget.fillColor != null,
-                        contentPadding: const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
+                        contentPadding: widget.contentPadding ?? const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
                         hintText: widget.hintText,
                         hintStyle: TextStyle(
                           color: widget.hintColor ?? const Color(0xff000000).withOpacity(0.40),
