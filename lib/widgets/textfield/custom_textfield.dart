@@ -179,24 +179,6 @@ class _CustomTextFieldState extends State<CustomTextField> {
                     ),
                     onChanged: widget.onChanged,
                     decoration: InputDecoration(
-                        label: (widget.isLabelSeparated && widget.labelText != null && widget.labelPosition == TextFieldLabelPosition.float)
-                            ? null
-                            : Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Text(widget.labelText ?? '',
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 14,
-                                        color: widget.labelColor ?? Colors.black,
-                                      )),
-                                  if (widget.isRequired)
-                                    Text(
-                                      ' *',
-                                      style: TextStyle(color: Colors.red, fontSize: widget.labelSize, fontWeight: widget.labelFontWeight),
-                                    )
-                                ],
-                              ),
                         prefixIcon: widget.prefixWidget,
                         fillColor: widget.errorMessage != null ? widget.errorFillColor ?? const Color(0xffFFF5F6) : widget.fillColor,
                         filled: widget.fillColor != null,

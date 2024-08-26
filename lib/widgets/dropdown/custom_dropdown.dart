@@ -292,6 +292,8 @@ class TitleDropdown extends StatelessWidget {
   /// null. This field is used to set the dropdown additional flag text. This field is used for dropdown item visual purpose like [One Flag, Two Flag, Three Flag].
   final String? additionFlagText;
 
+  final double? rightIconSize ;
+
   const TitleDropdown({
     super.key,
     required this.dwItems,
@@ -329,6 +331,7 @@ class TitleDropdown extends StatelessWidget {
     this.dropDownIconData,
     this.rightIconBgColor,
     this.additionFlagText,
+    this.rightIconSize, 
   });
 
   @override
@@ -392,7 +395,7 @@ class TitleDropdown extends StatelessWidget {
                       color: rightIconBgColor ?? CustomColor.kPrimaryColor,
                     ),
                     child: Center(
-                      child: Icon(dropDownIconData ?? Icons.keyboard_arrow_down_outlined, color: rightIconColor ?? CustomColor.kTextColor),
+                      child: Icon(dropDownIconData ?? Icons.keyboard_arrow_down_outlined, color: rightIconColor ?? CustomColor.kTextColor,size: rightIconSize,),
                     ),
                   ),
                   isExpanded: true,
